@@ -62,16 +62,20 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
-    $( "#Begintijd" ).blur(function() {
- //Maak hier die Eindtijd +2
+        $("#Begintijd").blur(function () {
 
-});
+            var eindtijd = $("#Begintijd").val();
+            arr = eindtijd.split(':')           //splitst de getallen in tweeen.
+            hour = parseInt($.trim(arr[0]));    //checkt het 0e variabele in het array.
+            min = $.trim(arr[1]);               //Checkt het 1e variabele in het array.
+            hour += 2;
+            //alert(hour + ":" + min)
+            document.getElementById("Eindtijd").value = hour + ":" + min;
+        });
     </script>
-
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
